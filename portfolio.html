@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sujal Gusain | Digital Marketing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue: #1a56db;
+      --blue-soft: #eff4ff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --surface: #f8fafc;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #fff; color: var(--text); line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      z-index: 50; padding: 0 2rem; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-weight: 800; font-size: 1rem; letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 1.75rem; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; color: var(--muted); transition: color .15s; }
+    .nav-links a:hover { color: var(--blue); }
+
+    /* WRAPPER */
+    .page { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
+
+    /* HERO */
+    .hero { padding: 80px 0 72px; border-bottom: 1px solid var(--border); }
+    .hero-top { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.75rem; }
+    .avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue) 0%, #7c3aed 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .hero-name { font-size: 1.05rem; font-weight: 700; }
+    .hero-role { font-size: 0.85rem; color: var(--muted); }
+    h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -1px; line-height: 1.15; margin-bottom: 1rem; }
+    h1 em { font-style: normal; color: var(--blue); }
+    .hero-bio { font-size: 1rem; color: var(--muted); max-width: 560px; margin-bottom: 2rem; line-height: 1.75; }
+    .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.6rem 1.25rem; border-radius: 8px;
+      font-size: 0.875rem; font-weight: 600;
+      transition: all .15s; cursor: pointer; border: none;
+    }
+    .btn-primary { background: var(--blue); color: #fff; }
+    .btn-primary:hover { background: #1648c5; }
+    .btn-ghost { background: var(--surface); color: var(--text); border: 1px solid var(--border); }
+    .btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+    .pill {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 999px; padding: 0.3rem 0.85rem;
+      font-size: 0.78rem; font-weight: 500; color: var(--muted);
+    }
+
+    /* SECTION */
+    .section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+    .section:last-of-type { border-bottom: none; }
+    .section-eyebrow {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 0.5rem;
+    }
+    .section-heading { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.4px; margin-bottom: 0.5rem; }
+    .section-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2.5rem; }
+
+    /* PROJECT CARDS */
+    .projects { display: flex; flex-direction: column; gap: 1.5rem; }
+    .project-card {
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; transition: box-shadow .2s, transform .2s; background: #fff;
+    }
+    .project-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.09); transform: translateY(-3px); }
+    .card-inner { display: grid; grid-template-columns: 180px 1fr; }
+    .card-visual {
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; min-height: 180px;
+    }
+    .card-body { padding: 1.75rem; border-left: 1px solid var(--border); }
+    .card-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+    .tag {
+      background: var(--blue-soft); color: var(--blue);
+      font-size: 0.7rem; font-weight: 700;
+      padding: 0.2rem 0.6rem; border-radius: 999px;
+    }
+    .card-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; letter-spacing: -0.2px; }
+    .card-desc { font-size: 0.875rem; color: var(--muted); line-height: 1.75; margin-bottom: 1.25rem; }
+    .card-metrics { display: flex; gap: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+    .metric-val { font-size: 1.25rem; font-weight: 800; color: var(--blue); }
+    .metric-label { font-size: 0.72rem; color: var(--muted); margin-top: 1px; }
+
+    /* BLOG CARDS */
+    .blogs { display: flex; flex-direction: column; gap: 1.25rem; }
+    .blog-card {
+      border: 1px solid var(--border); border-radius: 14px;
+      padding: 1.5rem; display: flex; gap: 1.5rem;
+      align-items: flex-start; background: #fff;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .blog-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .blog-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .blog-meta { font-size: 0.75rem; color: var(--muted); margin-bottom: 0.35rem; }
+    .blog-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; letter-spacing: -0.2px; }
+    .blog-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 0.85rem; }
+    .blog-link {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--blue);
+      border: 1px solid var(--blue-soft); background: var(--blue-soft);
+      padding: 0.3rem 0.75rem; border-radius: 6px;
+      transition: background .15s;
+    }
+    .blog-link:hover { background: #dde8ff; }
+
+    /* CONTACT */
+    .contact-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 2rem; flex-wrap: wrap;
+    }
+    .contact-text h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.4rem; }
+    .contact-text p { color: var(--muted); font-size: 0.9rem; }
+    .contact-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .contact-link {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      padding: 0.55rem 1.1rem; border-radius: 8px;
+      font-size: 0.85rem; font-weight: 600;
+      border: 1px solid var(--border); background: #fff;
+      color: var(--text); transition: all .15s;
+    }
+    .contact-link:hover { border-color: var(--blue); color: var(--blue); }
+    .contact-link.primary { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .contact-link.primary:hover { background: #1648c5; }
+
+    /* FOOTER */
+    footer { text-align: center; padding: 2rem; font-size: 0.8rem; color: var(--muted); border-top: 1px solid var(--border); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      h1 { font-size: 1.9rem; }
+      .card-inner { grid-template-columns: 1fr; }
+      .card-visual { min-height: 90px; border-left: none; border-bottom: 1px solid var(--border); }
+      .card-body { border-left: none; }
+      nav { padding: 0 1rem; }
+      .page { padding: 0 1.25rem; }
+      .contact-block { flex-direction: column; }
+      .hero { padding: 48px 0 48px; }
+      .blog-card { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Sujal Gusain</div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#blogs">Blogs</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-top">
+      <div class="avatar">SG</div>
+      <div>
+        <div class="hero-name">Sujal Gusain</div>
+        <div class="hero-role">Digital Marketing Specialist · India</div>
+      </div>
+    </div>
+    <h1>I run ads &amp; content<br />that <em>actually convert.</em></h1>
+    <p class="hero-bio">
+      I run live ad campaigns and create SEO content that drives real results.
+      Hands-on experience with Meta Ads, Google Search Ads, and Amazon PPC — every project backed by actual data.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">See My Work ↓</a>
+      <a href="mailto:sujalgusain37@gmail.com" class="btn btn-ghost">✉ Email Me</a>
+    </div>
+    <div class="hero-pills">
+      <span class="pill">Google Search Ads</span>
+      <span class="pill">Meta Ads</span>
+      <span class="pill">Amazon PPC</span>
+      <span class="pill">SEO</span>
+      <span class="pill">Content Writing</span>
+      <span class="pill">D2C Marketing</span>
+      <span class="pill">Keyword Research</span>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-eyebrow">Projects</div>
+    <h2 class="section-heading">What I work on</h2>
+    <p class="section-sub">Paid and organic channels I've run end-to-end.</p>
+
+    <div class="projects">
+
+      <!-- Meta -->
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-visual" style="background: linear-gradient(135deg, #eff4ff 0%, #dde6ff 100%);">📣</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">Meta Ads</span>
+              <span class="tag">Facebook</span>
+              <span class="tag">Instagram</span>
+              <span class="tag">Audience Strategy</span>
+            </div>
+            <div class="card-title">Meta Ads — Unleavables Travel T-Shirt (Live Project)</div>
+            <div class="card-desc">
+              End-to-end Meta campaign for Unleavables' "I Love Travel" T-shirt, targeting Vijayawada over 7 days with ₹800 budget. Structured two ad sets — Core audience and Custom+Lookalike — with image and carousel creatives. Mid-campaign, identified that Custom+Lookalike was underperforming and paused it after day 4, redirecting full budget to the Core audience. Introduced fresh image creatives to sustain engagement. Instagram drove the strongest results (26 of 31 ATCs). Campaign beat every planned KPI — ATCs nearly doubled and CPA was cut in half vs plan.
+            </div>
+            <div class="card-metrics">
+              <div><div class="metric-val">31</div><div class="metric-label">ATCs (planned 16)</div></div>
+              <div><div class="metric-val">₹25.8</div><div class="metric-label">CPA (planned ₹51.61)</div></div>
+              <div><div class="metric-val">20%</div><div class="metric-label">CTR (planned 14%)</div></div>
+              <div><div class="metric-val">6%</div><div class="metric-label">CVR (planned 3.67%)</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Amazon PPC -->
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-visual" style="background: linear-gradient(135deg, #fffbeb 0%, #fde68a 100%);">📦</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">Amazon PPC</span>
+              <span class="tag">Sponsored Products</span>
+              <span class="tag">Listing Optimisation</span>
+              <span class="tag">E-commerce</span>
+            </div>
+            <div class="card-title">Amazon Sponsored Products — Homecrust Curtains (Live Project)</div>
+            <div class="card-desc">
+              End-to-end Amazon PPC project for Homecrust, a D2C home décor brand. Started with a full product page audit — rewrote the title, bullet points, and A+ content using keyword research and competitor analysis to improve indexing and CTR. Built and managed a Sponsored Products campaign (phrase match) with a ₹700 / 7-day budget, targeting 2 orders at ≤70% ACoS. Optimisations included bid adjustments, negative keyword additions, switching to fixed bidding for better visibility, and expanding to high-performing targeting keywords mid-campaign.
+            </div>
+            <div class="card-metrics">
+              <div><div class="metric-val">51%</div><div class="metric-label">ACoS (target ≤70%)</div></div>
+              <div><div class="metric-val">1.97x</div><div class="metric-label">ROAS</div></div>
+              <div><div class="metric-val">₹1,380</div><div class="metric-label">Sales Generated</div></div>
+              <div><div class="metric-val">2</div><div class="metric-label">Orders Achieved</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Search Ads Live Project -->
+      <div class="project-card">
+        <div class="card-inner">
+          <div class="card-visual" style="background: linear-gradient(135deg, #f0fdf4 0%, #bbf7d0 100%);">🔍</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="tag">Google Search Ads</span>
+              <span class="tag">RSA</span>
+              <span class="tag">Keyword Research</span>
+              <span class="tag">Campaign Optimisation</span>
+            </div>
+            <div class="card-title">Google Search Ads — Unleavables (Live Project)</div>
+            <div class="card-desc">
+              End-to-end Google Search Ads campaign for Unleavables, a D2C apparel brand. Ran a ₹800 / 7-day live campaign targeting Goa — covering brand analysis, competitor research, keyword mining, RSA copywriting, extensions strategy, and ongoing optimisation. Structured 4 ad groups (Oversized, Men's, Women's, Graphic) using Maximize Conversions bidding. Mid-campaign optimisations included pausing low-performing ad groups, expanding match types, +20% mobile bid adjustment, and negative keyword additions — resulting in a CPA 31% below the planned target.
+            </div>
+            <div class="card-metrics">
+              <div><div class="metric-val">16</div><div class="metric-label">Conversions (ATCs)</div></div>
+              <div><div class="metric-val">₹49.85</div><div class="metric-label">Actual CPA</div></div>
+              <div><div class="metric-val">15.69%</div><div class="metric-label">Conversion Rate</div></div>
+              <div><div class="metric-val">4%</div><div class="metric-label">CTR · ₹8 CPC</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BLOGS -->
+  <div class="section" id="blogs">
+    <div class="section-eyebrow">SEO Blogs</div>
+    <h2 class="section-heading">Published writing</h2>
+    <p class="section-sub">Long-form SEO content covering marketing strategy, brand teardowns, and niche topics.</p>
+
+    <div class="blogs">
+
+      <!-- Skippi -->
+      <div class="blog-card">
+        <div class="blog-icon" style="background: linear-gradient(135deg, #eff4ff, #dde6ff);">🍧</div>
+        <div>
+          <div class="blog-meta">Medium · June 2026 · 8 min read · D2C / Performance Marketing</div>
+          <div class="blog-title">How Skippi Ice Pops Turned a Shark Tank Moment Into a D2C Growth Engine</div>
+          <div class="blog-desc">
+            A deep teardown of Skippi's story-driven performance marketing system — how they converted Shark Tank exposure into a repeatable acquisition loop using Meta ads, influencer trust, Amazon reviews, and SEO. Covers funnel mechanics, unit economics, and where the strategy is most exposed.
+          </div>
+          <a href="https://medium.com/@sujalgusain37/how-skippi-ice-pops-turned-a-shark-tank-moment-into-a-d2c-growth-engine-ca61fb1e890b" target="_blank" class="blog-link">Read on Medium →</a>
+        </div>
+      </div>
+
+      <!-- Cat Body Language -->
+      <div class="blog-card">
+        <div class="blog-icon" style="background: linear-gradient(135deg, #f0fdf4, #bbf7d0);">🐱</div>
+        <div>
+          <div class="blog-meta">Unleavables Blog · May 2026 · 13 min read · Pet Care / SEO Content</div>
+          <div class="blog-title">Cat Body Language: 10 Signs Every Cat Owner Should Know</div>
+          <div class="blog-desc">
+            A comprehensive SEO guide covering cat communication — eye signals, tail positions, ear movements, stress indicators, and quirky habits explained. Written to rank for high-intent pet owner search queries with a structured, FAQ-rich format targeting featured snippets.
+          </div>
+          <a href="https://blog.unleavables.com/cat-body-languages-explained-signs-guidence/" target="_blank" class="blog-link">Read on Unleavables →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section" id="contact">
+    <div class="contact-block">
+      <div class="contact-text">
+        <h3>Let's work together</h3>
+        <p>Open to freelance projects, full-time roles, and collaborations.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:sujalgusain37@gmail.com" class="contact-link primary">✉ sujalgusain37@gmail.com</a>
+        <a href="https://linkedin.com/in/sujal-gusain" target="_blank" class="contact-link">💼 LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>© 2026 Sujal Gusain · Digital Marketing Specialist</footer>
+
+</body>
+</html>
